@@ -3,35 +3,13 @@ name: CI
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 env:
   IMAGE_NAME: nginx-alpine
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Build image
-        run: docker build --file Dockerfile --tag ${IMAGE_NAME} .
-
-      - name: Verify if nginx is running
-        run: |
-          echo $(docker run --name nginx-alpine nginx-alpine:latest nginx -v) |
-          if [[ ${1} != "nginx"* ]]; then
-            exit 1
-          fi
-
   push:
-    needs: test
-
     runs-on: ubuntu-latest
-
-    if: github.event_name == 'push'
 
     steps:
       - uses: actions/checkout@v2
