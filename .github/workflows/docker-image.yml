@@ -21,8 +21,8 @@ jobs:
 
       - name: Verify if nginx is running
         run: |
-          nginx_version=$(docker run --name ${IMAGE_NAME} ${IMAGE_NAME}:latest nginx -v)
-          if [[ $nginx_version != "nginx"* ]]; then
+          docker run --name nginx-alpine nginx-alpine:latest nginx -v |
+          if [[ ${1} != "nginx"* ]]; then
             exit 1
           fi
 
