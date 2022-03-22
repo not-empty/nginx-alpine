@@ -13,6 +13,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    if: github.event_name == 'pull_request'
+
     steps:
       - uses: actions/checkout@v2
 
@@ -28,6 +30,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: Build image
+        run: docker build --file Dockerfile --tag ${IMAGE_NAME} .
 
       - name: Auth
         run: echo "${{ secrets.GH_TOKEN }}" | docker login docker.pkg.github.com -u ${{ secrets.GH_USER }}} --password-stdin
