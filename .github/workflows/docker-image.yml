@@ -3,6 +3,8 @@ name: CI
 on:
   push:
     branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 env:
   IMAGE_NAME: nginx-alpine
@@ -18,9 +20,11 @@ jobs:
         run: docker build --file Dockerfile --tag ${IMAGE_NAME} .
 
       - name: Auth
+        if: github.event_name == 'push'
         run: echo "${{ secrets.GH_TOKEN }}" | docker login docker.pkg.github.com -u ${{ secrets.GH_USER }}} --password-stdin
 
       - name: Push image
+        if: github.event_name == 'push'
         run: |
           IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/${IMAGE_NAME}
 
