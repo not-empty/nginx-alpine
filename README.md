@@ -1,7 +1,7 @@
 # Nginx Alpine Linux - Docker image
 
 [![Latest Version](https://img.shields.io/github/v/release/kiwfy/nginx-alpine.svg?style=flat-square)](https://github.com/kiwfy/nginx-alpine/releases)
-[![Build Status](https://img.shields.io/github/workflow/status/kiwfy/nginx-alpine/CI?label=ci%20build&style=flat-square)](https://github.com/kiwfy/nginx-alpine/actions?query=workflow%3ACI)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/kiwfy/nginx-alpine/docker-image.yml?style=flat-square)](https://github.com/kiwfy/nginx-alpine/actions?query=workflow%3ACI)
 ![Docker Image Size](https://img.shields.io/docker/image-size/kiwfydev/nginx-alpine/latest)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
